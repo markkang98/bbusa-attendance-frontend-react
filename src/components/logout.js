@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {properties} from './properties.js';
 export default class LogOutButton extends React.Component{
     constructor(props){
         super(props);
@@ -7,7 +7,7 @@ export default class LogOutButton extends React.Component{
     }
     logOut(){
         event.preventDefault();
-        fetch("http://127.0.0.1:5000/logOut",{
+        fetch(properties.host + "/logOut",{
             method: 'POST',
             credentials: "include",
             mode: "cors"
