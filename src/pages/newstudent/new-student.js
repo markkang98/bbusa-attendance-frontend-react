@@ -4,7 +4,7 @@ class CreateNewStudent extends React.Component{
   constructor(props){
     super(props);
     this.state = {submitted: false, currentUser: '', beltColor: '', contractType: '', firstName:'', lastName:''};
-    fetch("http://127.0.0.1:5000/getCurrentUser",{
+    fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/getCurrentUser",{
             method: 'GET',
             credentials: "include",
             mode: "cors"
@@ -22,7 +22,7 @@ class CreateNewStudent extends React.Component{
     event.target.reset();
     this.setState({submitted: true});
     var queryParmas = "?userid=" + this.state.currentUser + "&beltColor=" + this.state.beltColor + "&contractType=" + this.state.contractType + "&firstName=" + this.state.firstName + "&lastName=" + this.state.lastName;
-    fetch("http://127.0.0.1:5000/enterStudentInformation" + queryParmas,{
+    fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/enterStudentInformation" + queryParmas,{
       method: 'POST',
       credentials: "include",
       mode: "cors"

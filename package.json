@@ -7,7 +7,7 @@
     "build": "webpack",
     "start": "webpack-dev-server --host attendance.trial.com --port 3000",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "homepage": "https://markkag98.github.io/bbusa-attendance-frontend-react",
   "author": "",
