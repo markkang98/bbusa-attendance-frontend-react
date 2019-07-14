@@ -7,7 +7,7 @@ class AttendanceHistorySearch extends React.Component{
   constructor(props){
     super(props)
     this.state = {currentUser:'', currentYear: 2019, first_name: '', last_name: '', attendance_dates: null}
-    fetch("https://blackbeltusa.us-east-1.elasticbeanstalk.com/getCurrentUser",{
+    fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/getCurrentUser",{
             method: 'GET',
             credentials: "include",
             mode: "cors"
@@ -29,7 +29,7 @@ class AttendanceHistorySearch extends React.Component{
     getAttendanceDates(event){
       event.preventDefault();
       var queryParams = "?first_name=" + this.state.first_name + "&last_name=" + this.state.last_name;
-      fetch("https://blackbeltusa.us-east-1.elasticbeanstalk.com/findAttendanceDates" +  queryParams,{
+      fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/findAttendanceDates" +  queryParams,{
         method: 'GET',
         credentials: "include",
         mode: "cors"
