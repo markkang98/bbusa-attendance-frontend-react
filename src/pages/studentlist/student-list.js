@@ -6,7 +6,7 @@ class StudentList extends React.Component{
     constructor(props) {
         super(props);
         this.state = {username: '', studentList: [], elements: [], headers: []};
-        fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/getCurrentUser",{
+        fetch("https://blackbeltusa.us-east-1.elasticbeanstalk.com/getCurrentUser",{
             method: 'GET',
             credentials: "include",
             mode: "cors"
@@ -20,7 +20,7 @@ class StudentList extends React.Component{
         }).then(this.getAllUsers.bind(this))
       }
       getAllUsers(){
-        fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/getAllStudents?user_id=" + this.state.username,{
+        fetch("https://blackbeltusa.us-east-1.elasticbeanstalk.com/getAllStudents?user_id=" + this.state.username,{
             method: 'GET',
             credentials: "include",
             mode: "cors"
@@ -105,7 +105,7 @@ class AttendanceButton extends React.Component{
     super(props);
   }
   submitAttendance(){
-    fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/submitAttendance?first_name=" + this.props.firstName + "&last_name=" + this.props.lastName,{
+    fetch("https://blackbeltusa.us-east-1.elasticbeanstalk.com/submitAttendance?first_name=" + this.props.firstName + "&last_name=" + this.props.lastName,{
       method: 'POST',
       credentials: "include",
       mode: "no-cors"

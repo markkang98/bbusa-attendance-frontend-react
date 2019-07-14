@@ -6,7 +6,7 @@ class LogIn extends React.Component{
       super(props);
       this.state = {username: '', password: '', loggedin: false, loading: true};
       this.handleChange = this.handleChange.bind(this);
-      fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/getCurrentUser",{
+      fetch("https://blackbeltusa.us-east-1.elasticbeanstalk.com/getCurrentUser",{
           method: 'GET',
           credentials: "include",
           mode: "cors"
@@ -28,7 +28,7 @@ class LogIn extends React.Component{
     }
     createUser(event){
       event.preventDefault();
-      fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/login?userid=" + this.state.username + "&password=" + this.state.password,{
+      fetch("https://blackbeltusa.us-east-1.elasticbeanstalk.com/login?userid=" + this.state.username + "&password=" + this.state.password,{
           method: 'POST',
           credentials: "include",
           mode: "cors"
