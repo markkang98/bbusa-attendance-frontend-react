@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { properties } from 'components/properties.js';
 class CreateNewStudent extends React.Component{
   constructor(props){
     super(props);
     this.state = {submitted: false, currentUser: '', beltColor: '', contractType: '', firstName:'', lastName:''};
-    fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/getCurrentUser",{
+    fetch(properties.host + "/getCurrentUser",{
             method: 'GET',
             credentials: "include",
             mode: "cors"
@@ -22,7 +23,7 @@ class CreateNewStudent extends React.Component{
     event.target.reset();
     this.setState({submitted: true});
     var queryParmas = "?userid=" + this.state.currentUser + "&beltColor=" + this.state.beltColor + "&contractType=" + this.state.contractType + "&firstName=" + this.state.firstName + "&lastName=" + this.state.lastName;
-    fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/enterStudentInformation" + queryParmas,{
+    fetch(properties.host + "/enterStudentInformation" + queryParmas,{
       method: 'POST',
       credentials: "include",
       mode: "cors"

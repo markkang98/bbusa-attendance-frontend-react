@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import "./student-list.css";
 import LogOutButton from 'components/logout.js';
+import { properties } from 'components/properties.js';
 class StudentList extends React.Component{
     constructor(props) {
         super(props);
         this.state = {username: '', studentList: [], elements: [], headers: []};
-        fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/getCurrentUser",{
+        fetch(properties.host + "/getCurrentUser",{
             method: 'GET',
             credentials: "include",
             mode: "cors"
@@ -20,7 +21,7 @@ class StudentList extends React.Component{
         }).then(this.getAllUsers.bind(this))
       }
       getAllUsers(){
-        fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/getAllStudents?user_id=" + this.state.username,{
+        fetch(properties.host + "/getAllStudents?user_id=" + this.state.username,{
             method: 'GET',
             credentials: "include",
             mode: "cors"
@@ -105,7 +106,7 @@ class AttendanceButton extends React.Component{
     super(props);
   }
   submitAttendance(){
-    fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/submitAttendance?first_name=" + this.props.firstName + "&last_name=" + this.props.lastName,{
+    fetch(properties.host + "/submitAttendance?first_name=" + this.props.firstName + "&last_name=" + this.props.lastName,{
       method: 'POST',
       credentials: "include",
       mode: "no-cors"
@@ -117,7 +118,7 @@ class AttendanceButton extends React.Component{
         <h2>{this.props.firstName}</h2>
         <h2>{this.props.lastName}</h2>
         <h2>{this.props.belt_color}</h2>
-        <button onClick = {this.submitAttendance}>Submit Attendance</button>
+        <button onClick = {this.submitAttendance.bind(this)}>Submit Attendance</button>
       </div>
     );
   }

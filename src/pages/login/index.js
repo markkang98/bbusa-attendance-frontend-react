@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
+import { properties } from 'components/properties.js';
 
 class LogIn extends React.Component{
   constructor(props) {
       super(props);
       this.state = {username: '', password: '', loggedin: false, loading: true};
       this.handleChange = this.handleChange.bind(this);
-      fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/getCurrentUser",{
+      var endpoint = "/getCurrentUser";
+      fetch( properties.host + endpoint,{
           method: 'GET',
           credentials: "include",
           mode: "cors"
@@ -28,7 +31,9 @@ class LogIn extends React.Component{
     }
     createUser(event){
       event.preventDefault();
-      fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/login?userid=" + this.state.username + "&password=" + this.state.password,{
+      var endpoint = "/login"
+      var queryParams = "?userid=" + this.state.username + "&password=" + this.state.password;
+      fetch(properties.host + endpoint + queryParams,{
           method: 'POST',
           credentials: "include",
           mode: "cors"
@@ -46,17 +51,15 @@ class LogIn extends React.Component{
       return <div />
     }else{
       return (
-        <div>
-        <form>
-            <h1>Log In</h1>
-          <label>
-            Name:
-            <input type="text" value={this.state.username} onChange={this.handleChange.bind(this)} />
-          </label>
-          <label>
-              Password:
-              <input type="password" value={this.state.password} onChange={this.handleChangePassword.bind(this)} />
-          </label>
+        <div className = "login-box">
+        <form className = "login-form">
+            <h1 className = "prompt">Log In</h1>
+            <div className = 'text'>
+            <input type="text" value={this.state.username} onChange={this.handleChange.bind(this)} placeholder = "Username" />
+            </div>
+            <div className = "text">
+            <input type="password" value={this.state.password} onChange={this.handleChangePassword.bind(this)} placeholder = "Password"/>
+            </div>
           <button onClick = {this.createUser.bind(this)}>Log In</button>
         </form>
         <button onClick = {this.goToCreateAccount}>Create Account</button>

@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Calendar, CalendarControls} from 'react-yearly-calendar';
 import './attendance-history.css';
+import { properties } from 'components/properties.js';
 
 class AttendanceHistorySearch extends React.Component{
   constructor(props){
     super(props)
     this.state = {currentUser:'', currentYear: 2019, first_name: '', last_name: '', attendance_dates: null}
-    fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/getCurrentUser",{
+    fetch(properties.host + "/getCurrentUser",{
             method: 'GET',
             credentials: "include",
             mode: "cors"
@@ -29,7 +30,7 @@ class AttendanceHistorySearch extends React.Component{
     getAttendanceDates(event){
       event.preventDefault();
       var queryParams = "?first_name=" + this.state.first_name + "&last_name=" + this.state.last_name;
-      fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/findAttendanceDates" +  queryParams,{
+      fetch(properties.host + "/findAttendanceDates" +  queryParams,{
         method: 'GET',
         credentials: "include",
         mode: "cors"

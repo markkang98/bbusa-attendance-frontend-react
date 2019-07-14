@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { properties } from 'components/properties.js';
 class CreateAccount extends React.Component{
     constructor(props) {
         super(props);
@@ -16,7 +17,7 @@ class CreateAccount extends React.Component{
       }
       createUser(event){
         event.preventDefault();
-        fetch("http://blackbeltusa.us-east-1.elasticbeanstalk.com/registration?userid=" + this.state.username + "&password=" + this.state.password,{
+        fetch(properties.host + "/registration?userid=" + this.state.username + "&password=" + this.state.password,{
           method: 'POST',
           credentials: "include",
           mode: "cors"
