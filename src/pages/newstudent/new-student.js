@@ -56,6 +56,7 @@ class CreateNewStudent extends React.Component{
           <option value="ORANGE">ORANGE</option>
           <option value="YELLOW">YELLOW</option>
           <option value="GREEN">GREEN</option>
+          <option value = "PURPLE">PURPLE</option>
           <option value="BLUE">BLUE</option>
           <option value="BROWN">BROWN</option>
           <option value="RED">RED</option>
