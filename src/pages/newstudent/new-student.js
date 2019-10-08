@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./new-student.css";
 import { properties } from 'components/properties.js';
 class CreateNewStudent extends React.Component{
   constructor(props){
@@ -46,7 +47,7 @@ class CreateNewStudent extends React.Component{
   }
   render(){
     return(
-      <div>
+      <div className = "new-student-form">
       <form onSubmit={this.handleClick.bind(this)}>
         <input type = "text" placeholder = "First Name" onChange={this.handleFirstChange.bind(this)}></input>
         <input type = "text" placeholder = "Last Name" onChange={this.handleLastChange.bind(this)}></input>
